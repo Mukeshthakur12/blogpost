@@ -37,10 +37,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = await prisma.category.findMany({
-    take: 3,
-    orderBy: { name: 'asc' },
-  });
+  let categories: { id: string; name: string; slug: string }[] = [];
+  try {
+    categories = await prisma.category.findMany({
+      select: { id: true, name: true, slug: true },
+      take: 3,
+      orderBy: { name: 'asc' },
+    });
+  } catch (error) {
+    console.error('Failed to fetch categories for navbar:', error);
+  }
 
   return (
     <html lang="en" className="dark">
