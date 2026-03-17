@@ -7,7 +7,6 @@ export default async function AdminDashboard() {
         prisma.category.count(),
         prisma.user.count(),
     ]);
-
     return (
         <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard Overview</h2>
