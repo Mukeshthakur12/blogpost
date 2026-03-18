@@ -10,8 +10,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     providers: [
         Credentials({
             async authorize(credentials) {
-                console.log('Authorize called with:', JSON.stringify(credentials));
-
                 const parsedCredentials = z
                     .object({ email: z.string().email(), password: z.string().min(6) })
                     .safeParse(credentials);
@@ -19,35 +17,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                 if (parsedCredentials.success) {
                     const { email, password } = parsedCredentials.data;
                     const normalizedEmail = email.toLowerCase();
-                    console.log('Parsed credentials for:', normalizedEmail);
 
                     try {
                         const user = await prisma.user.findUnique({ where: { email: normalizedEmail } });
-                        if (!user) {
-                            console.log('User not found in database');
-                            return null;
-                        }
+                        if (!user) return null;
 
-                        console.log('User found:', user.email);
-                        console.log('Stored hash:', user.password);
                         const passwordsMatch = await bcrypt.compare(password, user.password);
-                        console.log('Password match result:', passwordsMatch);
-
-                        if (passwordsMatch) {
-                            console.log('Login successful');
-                            return user;
-                        } else {
-                            console.log('Password mismatch');
-                        }
+                        if (passwordsMatch) return user;
                     } catch (e) {
-                        console.error('Database/Bcrypt error:', e);
                         return null;
                     }
-                } else {
-                    console.log('Zod parsing failed:', parsedCredentials.error);
                 }
-
-                console.log('Login failed - returning null');
                 return null;
             },
         }),
