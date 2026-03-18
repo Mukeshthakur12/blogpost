@@ -8,16 +8,12 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  password  String
-  image     String?
-  role      String   @default("USER") // ADMIN, USER
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  posts     Post[]
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  posts       Post[]
 }
 
 model Post {
@@ -35,19 +31,11 @@ model Post {
   categoryId  String?
   category    Category? @relation(fields: [categoryId], references: [id])
   tags        Tag[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
   seoTitle    String?
   seoDesc     String?
   viewCount   Int      @default(0)
-}
-
-model Category {
-  id          String   @id @default(cuid())
-  name        String   @unique
-  slug        String   @unique
-  description String?
-  posts       Post[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Tag {
@@ -55,4 +43,16 @@ model Tag {
   name  String @unique
   slug  String @unique
   posts Post[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  image     String?
+  role      String   @default("USER") // ADMIN, USER
+  posts     Post[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

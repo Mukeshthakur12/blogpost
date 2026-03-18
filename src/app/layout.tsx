@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     description: 'Your destination for tech reviews, buying guides, and latest news.',
     images: ['/og-image.jpg'],
   },
+  // Ensure correct absolute URLs for Open Graph/Twitter images in dev
+  metadataBase: new URL(process.env.NEXT_PUBLIC_METADATA_BASE ?? 'http://localhost:3000'),
 };
 
 import { prisma } from '@/lib/prisma';
