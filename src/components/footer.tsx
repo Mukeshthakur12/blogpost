@@ -15,7 +15,7 @@ export default function Footer() {
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center space-x-2 group">
                             <span className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400 group-hover:to-pink-400 transition-all duration-500 tracking-tight">
-                                TechBlog
+                                Appzyra
                             </span>
                         </Link>
                         <p className="text-muted-foreground/80 leading-relaxed font-medium text-sm">
@@ -80,7 +80,7 @@ export default function Footer() {
 
                 <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
                     <p className="text-sm font-medium text-muted-foreground/60">
-                        &copy; {new Date().getFullYear()} <span className="text-primary font-bold">TechBlog</span>. All rights reserved.
+                        &copy; {new Date().getFullYear()} <span className="text-primary font-bold">Appzyra</span>. All rights reserved.
                     </p>
                     <div className="flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-muted-foreground/40 italic">
                         <span>Made with Precision</span>

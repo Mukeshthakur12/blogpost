@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
                 <section className="space-y-4">
                     <p className="text-sm font-bold uppercase tracking-widest text-primary/60 italic">Last Updated: March 2026</p>
                     <p>
-                        Welcome to TechBlog. Your privacy is critically important to us. It is TechBlog's policy to respect your privacy regarding any information we may collect while operating our website.
+                        Welcome to Appzyra. Your privacy is critically important to us. It is Appzyra's policy to respect your privacy regarding any information we may collect while operating our website.
                     </p>
                 </section>
 

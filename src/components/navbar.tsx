@@ -49,7 +49,7 @@ export default function Navbar({ categories }: NavbarProps) {
             <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-between">
                 <Link href="/" className="flex items-center space-x-2 group">
                     <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400 group-hover:to-pink-400 transition-all duration-500">
-                        TechBlog
+                        Appzyra
                     </span>
                 </Link>
 

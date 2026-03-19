@@ -9,22 +9,22 @@ import BackgroundEffects from '@/components/background-effects';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'TechBlog - Latest Tech Reviews & Guides',
+  title: 'Appzyra - Latest Tech Reviews & Guides',
   description: 'Your destination for tech reviews, buying guides, and latest news.',
   keywords: ['tech reviews', 'buying guides', 'technology news', 'gadget reviews'],
-  authors: [{ name: 'TechBlog Team' }],
+  authors: [{ name: 'Appzyra Team' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://techblog.com',
-    siteName: 'TechBlog',
-    title: 'TechBlog - Latest Tech Reviews & Guides',
+    url: 'https://blog.appzyra.com',
+    siteName: 'Appzyra',
+    title: 'Appzyra - Latest Tech Reviews & Guides',
     description: 'Your destination for tech reviews, buying guides, and latest news.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'TechBlog' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Appzyra' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TechBlog - Latest Tech Reviews & Guides',
+    title: 'Appzyra - Latest Tech Reviews & Guides',
     description: 'Your destination for tech reviews, buying guides, and latest news.',
     images: ['/og-image.jpg'],
   },

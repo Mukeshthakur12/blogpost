@@ -18,28 +18,28 @@ export default function TermsConditions() {
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-foreground">1. Use License</h2>
                     <p>
-                        Permission is granted to temporarily download one copy of the materials (information or software) on TechBlog's website for personal, non-commercial transitory viewing only.
+                        Permission is granted to temporarily download one copy of the materials (information or software) on Appzyra's website for personal, non-commercial transitory viewing only.
                     </p>
                 </section>
 
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-foreground">2. Disclaimer</h2>
                     <p>
-                        The materials on TechBlog's website are provided "as is". TechBlog makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability.
+                        The materials on Appzyra's website are provided "as is". Appzyra makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability.
                     </p>
                 </section>
 
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-foreground">3. Limitations</h2>
                     <p>
-                        In no event shall TechBlog or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on TechBlog's Internet site.
+                        In no event shall Appzyra or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Appzyra's Internet site.
                     </p>
                 </section>
 
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-foreground">4. Governing Law</h2>
                     <p>
-                        Any claim relating to TechBlog's website shall be governed by the laws of the operating state without regard to its conflict of law provisions.
+                        Any claim relating to Appzyra's website shall be governed by the laws of the operating state without regard to its conflict of law provisions.
                     </p>
                 </section>
 

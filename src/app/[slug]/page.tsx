@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
     if (!post) return {};
 
-    const url = `https://techblog.com/${post.slug}`;
+    const url = `https://blog.appzyra.com/${post.slug}`;
     const keywords = post.tags.map(tag => tag.name).join(', ');
 
     return {

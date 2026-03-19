@@ -11,14 +11,14 @@ export default function AffiliateDisclosure() {
                 <section className="space-y-4">
                     <p className="text-sm font-bold uppercase tracking-widest text-primary/60 italic">Updated: March 2026</p>
                     <p>
-                        In compliance with the FTC guidelines, please assume that any and all links on this website are affiliate links. If you purchase products through these links, TechBlog may receive a small commission at no additional cost to you.
+                        In compliance with the FTC guidelines, please assume that any and all links on this website are affiliate links. If you purchase products through these links, Appzyra may receive a small commission at no additional cost to you.
                     </p>
                 </section>
 
                 <section className="space-y-4">
                     <h2 className="text-2xl font-bold text-foreground">Why We Use Affiliate Links</h2>
                     <p>
-                        Our goal at TechBlog is to provide the most comprehensive and unbiased tech reviews possible. Running a high-quality content platform requires significant resources. Affiliate commissions help us maintain our testing equipment, pay our writers, and keep the site free for all readers.
+                        Our goal at Appzyra is to provide the most comprehensive and unbiased tech reviews possible. Running a high-quality content platform requires significant resources. Affiliate commissions help us maintain our testing equipment, pay our writers, and keep the site free for all readers.
                     </p>
                 </section>
 

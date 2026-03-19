@@ -22,60 +22,60 @@ export default async function Home() {
 
       {/* Featured Hero Section */}
       {featuredPost && (
-        <section className="relative rounded-[3rem] overflow-hidden glass border-white/5 transition-all duration-700 hover:shadow-[0_0_80px_rgba(var(--primary),0.15)] group">
-          <div className="md:grid md:grid-cols-2">
-            <div className="h-[450px] md:h-[650px] relative overflow-hidden group">
+        <section className="relative rounded-[2.5rem] overflow-hidden glass border-white/5 transition-all duration-700 hover:shadow-[0_0_80px_rgba(var(--primary),0.15)] group">
+          <div className="md:grid md:grid-cols-[2fr_3fr] gap-0">
+            <div className="h-[300px] md:h-[400px] relative overflow-hidden group">
               {featuredPost.coverImage ? (
                 <img
                   src={featuredPost.coverImage}
                   alt={featuredPost.title}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
               ) : (
                 <div className="w-full h-full bg-gradient-to-br from-primary/20 via-purple-600/10 to-transparent flex items-center justify-center">
-                  <span className="text-[10rem] italic opacity-10 font-black select-none tracking-tighter">FEATURED</span>
+                  <span className="text-[6rem] italic opacity-10 font-black select-none tracking-tighter">FEATURED</span>
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
               
-              <div className="absolute top-8 left-8">
-                <span className="px-6 py-2 rounded-full glass bg-white/10 text-white font-black text-xs uppercase tracking-[0.2em] italic flex items-center gap-2 border border-white/20 backdrop-blur-xl">
+              <div className="absolute top-6 left-6">
+                <span className="px-4 py-1.5 rounded-full glass bg-white/10 text-white font-bold text-[10px] uppercase tracking-[0.2em] italic flex items-center gap-2 border border-white/20 backdrop-blur-md shadow-lg shadow-black/20">
                   <Sparkles className="h-3 w-3 text-primary animate-pulse" /> Trending Now
                 </span>
               </div>
             </div>
 
-            <div className="p-10 md:p-20 flex flex-col justify-center space-y-8 relative">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[120px] rounded-full -mr-32 -mt-32 opacity-20 pointer-events-none" />
+            <div className="p-8 md:p-12 flex flex-col justify-center space-y-6 relative">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 blur-[100px] rounded-full -mr-24 -mt-24 pointer-events-none" />
               
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
+              <div className="space-y-3 relative z-10">
+                <div className="flex items-center space-x-3">
                   {featuredPost.category && (
                     <Link href={`/category/${featuredPost.category.slug}`}>
-                      <span className="px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] bg-primary text-primary-foreground italic transition-all hover:scale-110 active:scale-95 cursor-pointer">
+                      <span className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.2em] bg-primary text-primary-foreground italic transition-all hover:bg-primary/90 cursor-pointer shadow-md shadow-primary/30">
                         {featuredPost.category.name}
                       </span>
                     </Link>
                   )}
-                  <div className="h-1 w-1 bg-white/20 rounded-full" />
-                  <span className="text-xs font-bold text-muted-foreground/60 uppercase tracking-widest">{featuredPost.createdAt.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <div className="h-1 w-1 bg-white/30 rounded-full" />
+                  <span className="text-[11px] font-semibold text-muted-foreground/80 uppercase tracking-widest">{featuredPost.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-[0.95] text-glow italic transition-colors">
-                  <Link href={`/${featuredPost.slug}`} className="hover:text-primary transition-all duration-500 block">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05] text-glow italic transition-colors drop-shadow-sm">
+                  <Link href={`/${featuredPost.slug}`} className="hover:text-primary transition-all duration-300 block">
                     {featuredPost.title}
                   </Link>
                 </h1>
               </div>
 
-              <p className="text-muted-foreground/80 md:text-xl line-clamp-3 leading-relaxed font-medium">
+              <p className="text-muted-foreground/80 md:text-lg line-clamp-3 leading-relaxed font-medium relative z-10">
                 {featuredPost.excerpt || "Dive into the latest insights and breakthrough reviews where technology meets creativity. Exploring the future of the digital landscape."}
               </p>
 
-              <div className="pt-8">
+              <div className="pt-4 relative z-10">
                 <Link href={`/${featuredPost.slug}`}>
-                  <Button size="lg" className="h-16 px-12 rounded-[2rem] text-xl font-black italic shadow-2xl hover:shadow-primary/40 transition-all hover:scale-105 group/btn">
-                    READ STORY <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover/btn:translate-x-2" />
+                  <Button size="lg" className="h-12 px-8 rounded-full text-sm font-black italic shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-1 group/btn">
+                    READ STORY <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>
                 </Link>
               </div>
