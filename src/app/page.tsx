@@ -37,7 +37,7 @@ export default async function Home() {
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-              
+
               <div className="absolute top-6 left-6">
                 <span className="px-4 py-1.5 rounded-full glass bg-white/10 text-white font-bold text-[10px] uppercase tracking-[0.2em] italic flex items-center gap-2 border border-white/20 backdrop-blur-md shadow-lg shadow-black/20">
                   <Sparkles className="h-3 w-3 text-primary animate-pulse" /> Trending Now
@@ -47,7 +47,7 @@ export default async function Home() {
 
             <div className="p-8 md:p-12 flex flex-col justify-center space-y-6 relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 blur-[100px] rounded-full -mr-24 -mt-24 pointer-events-none" />
-              
+
               <div className="space-y-3 relative z-10">
                 <div className="flex items-center space-x-3">
                   {featuredPost.category && (
@@ -61,20 +61,20 @@ export default async function Home() {
                   <span className="text-[11px] font-semibold text-muted-foreground/80 uppercase tracking-widest">{featuredPost.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                 </div>
 
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05] text-glow italic transition-colors drop-shadow-sm">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground transition-colors drop-shadow-sm">
                   <Link href={`/${featuredPost.slug}`} className="hover:text-primary transition-all duration-300 block">
                     {featuredPost.title}
                   </Link>
                 </h1>
               </div>
 
-              <p className="text-muted-foreground/80 md:text-lg line-clamp-3 leading-relaxed font-medium relative z-10">
+              <p className="text-muted-foreground md:text-lg line-clamp-3 leading-relaxed font-medium relative z-10">
                 {featuredPost.excerpt || "Dive into the latest insights and breakthrough reviews where technology meets creativity. Exploring the future of the digital landscape."}
               </p>
 
               <div className="pt-4 relative z-10">
                 <Link href={`/${featuredPost.slug}`}>
-                  <Button size="lg" className="h-12 px-8 rounded-full text-sm font-black italic shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-1 group/btn">
+                  <Button size="lg" className="h-12 px-8 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all hover:-translate-y-1 group/btn">
                     READ STORY <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                   </Button>
                 </Link>
@@ -88,8 +88,8 @@ export default async function Home() {
       <section className="space-y-12">
         <div className="flex items-end justify-between border-b border-white/5 pb-8">
           <div className="space-y-2">
-            <span className="text-xs font-black uppercase tracking-[0.4em] text-primary/60 italic">Curated Content</span>
-            <h2 className="text-3xl md:text-4xl font-black italic tracking-tight">Latest Publications</h2>
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Curated Content</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Latest Publications</h2>
           </div>
           <Link href="/posts" className="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-all pb-1">
             Browse All <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

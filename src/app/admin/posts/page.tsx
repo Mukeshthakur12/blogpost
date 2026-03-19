@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
+import { deletePost } from '@/lib/actions/post';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -59,10 +60,14 @@ export default async function PostsPage() {
                                                 <Edit className="h-4 w-4" />
                                             </Button>
                                         </Link>
-                                        {/* Delete button (client component or server action placeholder) */}
-                                        <Button variant="ghost" size="icon" className="text-red-600">
-                                            <Trash className="h-4 w-4" />
-                                        </Button>
+                                        <form action={async () => {
+                                            'use server';
+                                            await deletePost(post.id);
+                                        }}>
+                                            <Button type="submit" variant="ghost" size="icon" className="text-red-600 hover:text-red-700 hover:bg-red-500/10 hover:shadow-lg transition-all active:scale-95">
+                                                <Trash className="h-4 w-4" />
+                                            </Button>
+                                        </form>
                                     </div>
                                 </TableCell>
                             </TableRow>

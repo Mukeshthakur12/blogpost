@@ -51,17 +51,17 @@ export default function PostCard({ post, index }: PostCardProps) {
                     </div>
 
                     <CardContent className="p-8">
-                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground/60 mb-4 font-black flex items-center gap-3">
+                        <div className="text-xs font-semibold text-muted-foreground mb-4 flex items-center gap-3">
                             <span>{post.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                            <div className="h-1 w-1 rounded-full bg-primary/40" />
-                            <span className="text-primary/60">5 min read</span>
+                            <div className="h-1 w-1 rounded-full bg-primary/60" />
+                            <span className="text-primary/90">5 min read</span>
                         </div>
 
-                        <h3 className="text-2xl font-black mb-4 group-hover:text-primary transition-colors line-clamp-2 leading-tight tracking-tight">
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                             {post.title}
                         </h3>
 
-                        <p className="text-muted-foreground/70 text-base line-clamp-3 leading-relaxed font-medium">
+                        <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
                             {post.excerpt || "Unlock the potential of this article as we explore the deeper nuances of technology."}
                         </p>
 

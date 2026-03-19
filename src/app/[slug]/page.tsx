@@ -69,9 +69,9 @@ export default async function PostPage({ params }: PostPageProps) {
     }) : [];
 
     return (
-        <div className="max-w-[800px] mx-auto  px-4 sm:px-6">
+        <div className="max-w-[800px] w-full mx-auto px-3 sm:px-4 md:px-0">
             {/* Breadcrumbs */}
-            <nav className="flex items-center space-x-2 text-xs font-black uppercase tracking-[0.2em] text-muted-foreground/40 mb-12 italic">
+            <nav className="flex items-center space-x-2 text-sm font-semibold text-muted-foreground mb-12">
                 <Link href="/" className="hover:text-primary flex items-center gap-1 transition-colors"><Home className="h-3 w-3" /> Home</Link>
                 <ChevronRight className="h-3 w-3" />
                 {post.category && (
@@ -80,36 +80,31 @@ export default async function PostPage({ params }: PostPageProps) {
                         <ChevronRight className="h-3 w-3" />
                     </>
                 )}
-                <span className="text-muted-foreground/20 truncate max-w-[100px]">{post.title}</span>
+                <span className="text-muted-foreground truncate max-w-[200px]">{post.title}</span>
             </nav>
 
             <article className="space-y-12">
                 {/* Clean Header */}
                 <header className="space-y-8 text-center">
                     <div className="space-y-4">
-                        {post.category && (
-                            <Link href={`/category/${post.category.slug}`} className="inline-block">
-                                <span className="text-xs font-black uppercase tracking-[0.3em] text-primary italic border-b-2 border-primary/20 pb-1">
-                                    {post.category.name}
-                                </span>
-                            </Link>
-                        )}
-                        <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-[1.1] text-glow italic">
+
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-[1.2] text-foreground">
                             {post.title}
                         </h1>
                     </div>
 
-                    <div className="flex flex-col items-center space-y-4 text-sm font-bold text-muted-foreground/60">
-                        <div className="flex items-center space-x-4">
-                            <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {post.createdAt.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                            <span className="w-1 h-1 bg-muted-foreground/20 rounded-full" />
-                            <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> 6 MIN READ</span>
-                        </div>
-                        <div className="flex items-center space-x-3 pt-2">
-                            <div className="h-8 w-8 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center">
-                                {post.author.image ? <img src={post.author.image} className="w-full h-full object-cover" /> : <UserIcon className="h-4 w-4 text-primary" />}
+                    <div className="flex flex-col items-center space-y-4 text-[11px] sm:text-sm font-medium text-muted-foreground">
+                        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                            <span className="flex items-center gap-1.5 sm:gap-2"><Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {post.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
+                            <span className="flex items-center gap-1.5 sm:gap-2"><Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> 6 MIN READ</span>
+                            <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
+                            <div className="flex items-center gap-2 sm:gap-3">
+                                <div className="h-7 w-7 sm:h-10 sm:w-10 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                                    {post.author.image ? <img src={post.author.image} className="w-full h-full object-cover" /> : <UserIcon className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-primary" />}
+                                </div>
+                                <span className="text-foreground font-semibold text-xs sm:text-sm">By {post.author.name}</span>
                             </div>
-                            <span className="uppercase tracking-widest text-[10px] text-foreground font-black">Words by {post.author.name}</span>
                         </div>
                     </div>
 
@@ -121,7 +116,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 </header>
 
                 {/* Content Area */}
-                <div className="prose prose-xl dark:prose-invert max-w-none prose-headings:font-black prose-headings:italic prose-headings:tracking-tighter prose-p:leading-[1.8] prose-p:font-medium prose-p:text-muted-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-[2rem] prose-strong:text-foreground">
+                <div className="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none prose-headings:font-extrabold prose-p:leading-[1.8] prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:w-full prose-img:rounded-2xl prose-strong:text-foreground break-words">
                     <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
@@ -156,15 +151,15 @@ export default async function PostPage({ params }: PostPageProps) {
                     </div>
 
                     {/* Simple Newsletter Hook */}
-                    <div className="glass p-10 md:p-16 rounded-[3rem] border-white/5 text-center space-y-8 bg-primary/5 relative overflow-hidden">
+                    <div className="glass p-8 md:p-12 rounded-3xl border-white/5 text-center space-y-6 bg-primary/5 relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-64 h-64 bg-primary/20 blur-[120px] rounded-full -ml-32 -mt-32 opacity-20" />
                         <div className="space-y-3 relative">
-                            <h3 className="text-3xl font-black italic tracking-tight">Enjoyed this editorial?</h3>
-                            <p className="text-muted-foreground font-medium max-w-sm mx-auto">Join our private circle of 50k+ enthusiasts for exclusive weekly insights.</p>
+                            <h3 className="text-3xl font-extrabold tracking-tight">Stay Updated</h3>
+                            <p className="text-muted-foreground max-w-sm mx-auto">Join our private circle of 50k+ enthusiasts for exclusive weekly insights.</p>
                         </div>
                         <form className="relative max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="email@example.com" className="flex-1 h-14 px-6 bg-white/5 border-none rounded-2xl text-sm font-bold focus:ring-2 ring-primary/40" />
-                            <Button className="h-14 px-8 rounded-2xl font-black uppercase tracking-widest text-xs">Stay Informed</Button>
+                            <input type="email" placeholder="email@example.com" className="flex-1 h-12 px-6 bg-white/5 border border-white/10 rounded-xl text-sm focus:ring-2 ring-primary/40 focus:outline-none" />
+                            <Button className="h-12 px-8 rounded-xl font-bold">Subscribe</Button>
                         </form>
                     </div>
 
