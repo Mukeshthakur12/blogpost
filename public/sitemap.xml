@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://example.com/sitemap-0.xml</loc></sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://blog.appzyra.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Categories -->
+  <url>
+    <loc>https://blog.appzyra.com/category/smartphones</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/category/watches</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Example Blog Posts (replace with your real URLs) -->
+  <url>
+    <loc>https://blog.appzyra.com/best-budget-smartphones-for-students</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/best-smartphones-under-500-in-2026-top-picks</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/best-gaming-phones-under-25-000-in-india-2026</loc>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

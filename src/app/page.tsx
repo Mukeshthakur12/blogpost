@@ -11,11 +11,14 @@ export default async function Home() {
     where: { published: true },
     include: { category: true },
     orderBy: { createdAt: 'desc' },
-    take: 9,
+    take: 10,
   });
 
-  const featuredPost = latestPosts[0]; // For now just take the first one as featured
-  const gridPosts = latestPosts.slice(1);
+  // Find a post marked as featured, or fallback to the latest one
+  const featuredPost = latestPosts.find(p => p.featured) || latestPosts[0];
+  
+  // Filter out the featured post from the grid
+  const gridPosts = latestPosts.filter(p => p.id !== featuredPost?.id).slice(0, 9);
 
   return (
     <div className="space-y-20 pb-20">
@@ -63,13 +66,13 @@ export default async function Home() {
 
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground transition-colors drop-shadow-sm">
                   <Link href={`/${featuredPost.slug}`} className="hover:text-primary transition-all duration-300 block">
-                    {featuredPost.title}
+                    {featuredPost.seoTitle || featuredPost.title}
                   </Link>
                 </h1>
               </div>
 
               <p className="text-muted-foreground md:text-lg line-clamp-3 leading-relaxed font-medium relative z-10">
-                {featuredPost.excerpt || "Dive into the latest insights and breakthrough reviews where technology meets creativity. Exploring the future of the digital landscape."}
+                {featuredPost.seoDesc || featuredPost.excerpt || "Dive into the latest insights and breakthrough reviews where technology meets creativity. Exploring the future of the digital landscape."}
               </p>
 
               <div className="pt-4 relative z-10">

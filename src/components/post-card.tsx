@@ -10,16 +10,20 @@ import { ArrowRight } from 'lucide-react';
 interface PostCardProps {
     post: {
         title: string;
+        seoTitle?: string | null;
         slug: string;
         excerpt?: string | null;
         createdAt: Date;
         category?: { name: string; slug: string } | null;
         coverImage?: string | null;
+        featured?: boolean;
     };
     index: number;
 }
 
 export default function PostCard({ post, index }: PostCardProps) {
+    const displayTitle = post.seoTitle || post.title;
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -33,7 +37,7 @@ export default function PostCard({ post, index }: PostCardProps) {
                         {post.coverImage ? (
                             <img
                                 src={post.coverImage}
-                                alt={post.title}
+                                alt={displayTitle}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                         ) : (
@@ -43,11 +47,18 @@ export default function PostCard({ post, index }: PostCardProps) {
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        {post.category && (
-                            <Badge className="absolute top-6 left-6 glass bg-black/20 text-white border-white/20 px-4 py-1.5 rounded-full font-bold uppercase tracking-tight text-[10px] hover:bg-primary transition-all duration-300">
-                                {post.category.name}
-                            </Badge>
-                        )}
+                        <div className="absolute top-6 left-6 flex flex-col gap-2">
+                            {post.category && (
+                                <Badge className="glass bg-black/20 text-white border-white/20 px-4 py-1.5 rounded-full font-bold uppercase tracking-tight text-[10px] hover:bg-primary transition-all duration-300">
+                                    {post.category.name}
+                                </Badge>
+                            )}
+                            {post.featured && (
+                                <Badge className="bg-amber-500/90 text-white border-none px-4 py-1.5 rounded-full font-bold uppercase tracking-tight text-[9px] shadow-lg shadow-amber-500/20">
+                                    ★ Featured
+                                </Badge>
+                            )}
+                        </div>
                     </div>
 
                     <CardContent className="p-8">
@@ -58,7 +69,7 @@ export default function PostCard({ post, index }: PostCardProps) {
                         </div>
 
                         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                            {post.title}
+                            {displayTitle}
                         </h3>
 
                         <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">

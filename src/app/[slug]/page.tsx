@@ -88,9 +88,14 @@ export default async function PostPage({ params }: PostPageProps) {
                 <header className="space-y-8 text-center">
                     <div className="space-y-4">
 
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-[1.2] text-foreground">
-                            {post.title}
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-foreground">
+                            {post.seoTitle || post.title}
                         </h1>
+                        {(post.seoDesc || post.excerpt) && (
+                            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto leading-relaxed">
+                                {post.seoDesc || post.excerpt}
+                            </p>
+                        )}
                     </div>
 
                     <div className="flex flex-col items-center space-y-4 text-[11px] sm:text-sm font-medium text-muted-foreground">

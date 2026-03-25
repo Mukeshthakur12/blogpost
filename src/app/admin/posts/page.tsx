@@ -43,20 +43,43 @@ export default async function PostsPage() {
                     </TableHeader>
                     <TableBody>
                         {posts.map((post) => (
-                            <TableRow key={post.id}>
-                                <TableCell className="font-medium">{post.title}</TableCell>
+                            <TableRow key={post.id} className="group hover:bg-white/5 transition-colors h-20">
                                 <TableCell>
-                                    <span className={`px-2 py-1 rounded-full text-xs ${post.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                                        {post.published ? 'Published' : 'Draft'}
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-16 h-10 rounded-lg overflow-hidden bg-white/5 border border-white/5 flex-shrink-0">
+                                            {post.coverImage ? (
+                                                <img src={post.coverImage} className="w-full h-full object-cover" />
+                                            ) : (
+                                                <div className="w-full h-full flex items-center justify-center opacity-20">
+                                                    <Plus className="w-4 h-4 rotate-45" />
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="font-bold text-base leading-tight">{post.title}</p>
+                                            {post.featured && (
+                                                <span className="text-[10px] font-black uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-full">Featured</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </TableCell>
+                                <TableCell>
+                                    <span className={`px-3 py-1 rounded-xl text-xs font-black uppercase tracking-tighter ${post.published ? 'bg-green-500/20 text-green-500 border border-green-500/20' : 'bg-white/5 text-muted-foreground border border-white/5'}`}>
+                                        {post.published ? 'Live' : 'Draft'}
                                     </span>
                                 </TableCell>
-                                <TableCell>{post.category?.name || 'Uncategorized'}</TableCell>
-                                <TableCell>{post.author.name}</TableCell>
-                                <TableCell>{post.createdAt.toLocaleDateString()}</TableCell>
+                                <TableCell className="font-bold opacity-60">{post.category?.name || 'Uncategorized'}</TableCell>
+                                <TableCell className="text-sm">{post.author.name}</TableCell>
+                                <TableCell className="text-xs font-medium opacity-40">{post.createdAt.toLocaleDateString()}</TableCell>
                                 <TableCell className="text-right">
-                                    <div className="flex justify-end space-x-2">
+                                    <div className="flex justify-end items-center space-x-2">
+                                        <Link href={`/${post.slug}`} target="_blank">
+                                            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-xl hover:bg-primary/20 hover:text-primary">
+                                                <Plus className="h-4 w-4" />
+                                            </Button>
+                                        </Link>
                                         <Link href={`/admin/posts/${post.id}`}>
-                                            <Button variant="ghost" size="icon">
+                                            <Button variant="ghost" size="icon" className="h-9 w-9 rounded-xl hover:bg-white/10">
                                                 <Edit className="h-4 w-4" />
                                             </Button>
                                         </Link>
@@ -64,7 +87,7 @@ export default async function PostsPage() {
                                             'use server';
                                             await deletePost(post.id);
                                         }}>
-                                            <Button type="submit" variant="ghost" size="icon" className="text-red-600 hover:text-red-700 hover:bg-red-500/10 hover:shadow-lg transition-all active:scale-95">
+                                            <Button type="submit" variant="ghost" size="icon" className="h-9 w-9 rounded-xl text-red-400 hover:text-red-500 hover:bg-red-500/10">
                                                 <Trash className="h-4 w-4" />
                                             </Button>
                                         </form>

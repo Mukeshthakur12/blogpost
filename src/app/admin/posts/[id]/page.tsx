@@ -31,7 +31,11 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
                     content: post.content,
                     excerpt: post.excerpt,
                     published: post.published,
-                    categoryId: post.categoryId
+                    featured: post.featured,
+                    categoryId: post.categoryId,
+                    coverImage: post.coverImage,
+                    seoTitle: post.seoTitle,
+                    seoDesc: post.seoDesc,
                 }}
                 action={updatePostWithId}
                 categories={categories}

@@ -10,9 +10,14 @@ const PostSchema = z.object({
     title: z.string().min(1),
     slug: z.string().min(1).regex(/^[a-z0-9-]+$/, 'Slug must be lowercase alphanumeric with hyphens'),
     content: z.string().min(1),
-    excerpt: z.string().optional(),
-    published: z.coerce.boolean(),
-    categoryId: z.string().optional(),
+    excerpt: z.string().optional().nullable(),
+    published: z.preprocess((val) => val === 'true' || val === true, z.boolean()),
+    featured: z.preprocess((val) => val === 'true' || val === true, z.boolean()).optional(),
+    type: z.string().default('ARTICLE'),
+    categoryId: z.string().optional().nullable(),
+    coverImage: z.string().optional().nullable(),
+    seoTitle: z.string().optional().nullable(),
+    seoDesc: z.string().optional().nullable(),
 });
 
 export async function createPost(prevState: any, formData: FormData) {
@@ -28,7 +33,11 @@ export async function createPost(prevState: any, formData: FormData) {
         content: formData.get('content'),
         excerpt: formData.get('excerpt'),
         published: formData.get('published'),
-        categoryId: formData.get('categoryId') || undefined,
+        featured: formData.get('featured'),
+        categoryId: formData.get('categoryId') || null,
+        coverImage: formData.get('coverImage'),
+        seoTitle: formData.get('seoTitle'),
+        seoDesc: formData.get('seoDesc'),
     });
 
     if (!validatedFields.success) {
@@ -38,7 +47,7 @@ export async function createPost(prevState: any, formData: FormData) {
         };
     }
 
-    const { title, slug, content, excerpt, published, categoryId } = validatedFields.data;
+    const { title, slug, content, excerpt, published, categoryId, featured, coverImage, seoTitle, seoDesc } = validatedFields.data;
 
     try {
         await prisma.post.create({
@@ -48,11 +57,16 @@ export async function createPost(prevState: any, formData: FormData) {
                 content,
                 excerpt,
                 published,
+                featured,
+                coverImage,
+                seoTitle,
+                seoDesc,
                 categoryId: categoryId as string,
                 authorId: user.id,
             },
         });
     } catch (error) {
+        console.error('Database Error:', error);
         return {
             message: 'Database Error: Failed to Create Post.',
         };
@@ -73,7 +87,11 @@ export async function updatePost(id: string, prevState: any, formData: FormData)
         content: formData.get('content'),
         excerpt: formData.get('excerpt'),
         published: formData.get('published'),
-        categoryId: formData.get('categoryId') || undefined,
+        featured: formData.get('featured'),
+        categoryId: formData.get('categoryId') || null,
+        coverImage: formData.get('coverImage'),
+        seoTitle: formData.get('seoTitle'),
+        seoDesc: formData.get('seoDesc'),
     });
 
     if (!validatedFields.success) {
@@ -83,7 +101,7 @@ export async function updatePost(id: string, prevState: any, formData: FormData)
         };
     }
 
-    const { title, slug, content, excerpt, published, categoryId } = validatedFields.data;
+    const { title, slug, content, excerpt, published, categoryId, featured, coverImage, seoTitle, seoDesc } = validatedFields.data;
 
     try {
         await prisma.post.update({
@@ -94,10 +112,15 @@ export async function updatePost(id: string, prevState: any, formData: FormData)
                 content,
                 excerpt,
                 published,
+                featured,
+                coverImage,
+                seoTitle,
+                seoDesc,
                 categoryId: categoryId as string,
             },
         });
     } catch (error) {
+        console.error('Database Error:', error);
         return {
             message: 'Database Error: Failed to Update Post.',
         };
