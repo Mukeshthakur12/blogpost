@@ -1,52 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset 
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+xmlns:xhtml="http://www.w3.org/1999/xhtml"
+xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
   <!-- Homepage -->
   <url>
     <loc>https://blog.appzyra.com/</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Pages -->
+  <url>
+    <loc>https://blog.appzyra.com/affiliate-disclosure</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/contact</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/privacy-policy</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/terms-conditions</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
   <!-- Categories -->
   <url>
     <loc>https://blog.appzyra.com/category/smartphones</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://blog.appzyra.com/category/watches</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts (ADD YOUR REAL POSTS HERE) -->
-
+  <!-- Blog Posts -->
   <url>
     <loc>https://blog.appzyra.com/best-mobile-phones-under-20000-india</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://blog.appzyra.com/best-budget-smartphones-for-students</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://blog.appzyra.com/best-watches-under-5000-india</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://blog.appzyra.com/best-smartwatch-under-5000-india</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://blog.appzyra.com/best-watches-under-5-000-in-india-2026-top-picks-worth-your-money</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+
   <url>
     <loc>https://blog.appzyra.com/top-10-best-phones-under-20-000-in-india-march-2026</loc>
+    <lastmod>2026-03-25T06:37:36.515Z</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
