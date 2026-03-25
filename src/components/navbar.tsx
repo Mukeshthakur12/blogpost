@@ -47,8 +47,18 @@ export default function Navbar({ categories }: NavbarProps) {
                 }`}
         >
             <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-20 items-center justify-between">
-                <Link href="/" className="flex items-center space-x-2 group">
-                    <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400 group-hover:to-pink-400 transition-all duration-500">
+                <Link href="/" className="flex items-center space-x-3 group">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-purple-500 to-pink-500 shadow-lg shadow-primary/20 group-hover:shadow-primary/40 group-hover:scale-105 transition-all duration-500 overflow-hidden">
+                        {/* Inner glass reflection */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent flex items-center justify-center pointer-events-none" />
+                        <span className="text-white font-black text-2xl relative z-10 tracking-tighter mix-blend-overlay">
+                            A
+                        </span>
+                        <span className="text-white font-black text-2xl absolute z-20 tracking-tighter opacity-90">
+                            A
+                        </span>
+                    </div>
+                    <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400 group-hover:to-pink-400 transition-all duration-500 tracking-tight">
                         Appzyra
                     </span>
                 </Link>

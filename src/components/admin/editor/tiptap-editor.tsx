@@ -46,6 +46,7 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
             Image.configure({
                 HTMLAttributes: {
                     class: 'rounded-2xl max-w-full h-auto border-2 border-white/5 shadow-xl mx-auto block my-8',
+                    loading: 'lazy',
                 },
             }),
             Link.configure({
@@ -108,7 +109,12 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
             const data = await response.json();
 
             if (data.success) {
-                editor.chain().focus().setImage({ src: data.url }).run();
+                const altText = window.prompt("Enter SEO Alt Text (MANDATORY) - e.g. 'Primary keyword + brand + context':");
+                if (!altText || altText.trim() === '') {
+                    alert('Upload cancelled: SEO Alt text is required for ranking.');
+                    return;
+                }
+                editor.chain().focus().setImage({ src: data.url, alt: altText }).run();
             } else {
                 alert('Upload failed: ' + data.message);
             }
@@ -315,10 +321,10 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
                             <DropdownMenuItem onClick={insertCallout} className="rounded-xl py-3 focus:bg-primary/20">
                                 <Quote className="mr-2 h-4 w-4 text-primary" /> Callout / Quote
                             </DropdownMenuItem>
-                            
+
                             <DropdownMenuSeparator className="bg-white/5" />
                             <DropdownMenuLabel className="text-xs uppercase font-bold opacity-50 px-3 py-2">Manage Table</DropdownMenuLabel>
-                            
+
                             <DropdownMenuItem onClick={() => editor.chain().focus().addColumnBefore().run()} disabled={!editor.isActive('table')} className="rounded-xl focus:bg-primary/20">
                                 <Columns className="mr-2 h-4 w-4" /> Add Column Before
                             </DropdownMenuItem>
@@ -331,7 +337,7 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
                             <DropdownMenuItem onClick={() => editor.chain().focus().addRowAfter().run()} disabled={!editor.isActive('table')} className="rounded-xl focus:bg-primary/20">
                                 <Rows className="mr-2 h-4 w-4 text-primary" /> Add Row After
                             </DropdownMenuItem>
-                            
+
                             <DropdownMenuSeparator className="bg-white/5" />
                             <DropdownMenuItem onClick={() => editor.chain().focus().deleteColumn().run()} disabled={!editor.isActive('table')} className="rounded-xl text-red-400 focus:bg-red-400/20">
                                 <Trash2 className="mr-2 h-4 w-4" /> Delete Column
@@ -415,7 +421,7 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
                     /* Selection & Focus */
                     .prose-edit *:focus { outline: none; }
                 `}</style>
-                
+
                 <div className="flex-1 overflow-auto bg-black/10 rounded-[2rem]">
                     <EditorContent editor={editor} className="h-full" />
                 </div>
