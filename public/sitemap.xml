@@ -18,19 +18,35 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Example Blog Posts (replace with your real URLs) -->
+  <!-- Blog Posts (ADD YOUR REAL POSTS HERE) -->
+
+  <url>
+    <loc>https://blog.appzyra.com/best-mobile-phones-under-20000-india</loc>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://blog.appzyra.com/best-budget-smartphones-for-students</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://blog.appzyra.com/best-smartphones-under-500-in-2026-top-picks</loc>
+    <loc>https://blog.appzyra.com/best-watches-under-5000-india</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://blog.appzyra.com/best-gaming-phones-under-25-000-in-india-2026</loc>
+    <loc>https://blog.appzyra.com/best-smartwatch-under-5000-india</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://blog.appzyra.com/best-watches-under-5-000-in-india-2026-top-picks-worth-your-money</loc>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.appzyra.com/top-10-best-phones-under-20-000-in-india-march-2026</loc>
     <priority>0.7</priority>
   </url>
 
