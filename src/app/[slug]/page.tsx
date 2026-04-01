@@ -104,7 +104,11 @@ export default async function PostPage({ params }: PostPageProps) {
 
                     <div className="flex flex-col items-center space-y-4 text-[11px] sm:text-sm font-medium text-muted-foreground">
                         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                            <span className="flex items-center gap-1.5 sm:gap-2"><Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {post.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            <span className="flex items-center gap-1.5 sm:gap-2"><Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {new Intl.DateTimeFormat('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(post.createdAt))}</span>
                             <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
                             <span className="flex items-center gap-1.5 sm:gap-2"><Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ</span>
                             <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
@@ -128,7 +132,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none prose-headings:font-extrabold prose-p:leading-[1.8] prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:w-full prose-img:rounded-2xl prose-strong:text-foreground break-words">
                     <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
-                        // rehypePlugins={[rehypeRaw]}
+                        rehypePlugins={[rehypeRaw]}
                     >
                         {post.content}
                     </ReactMarkdown>

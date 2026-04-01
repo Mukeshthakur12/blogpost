@@ -13,6 +13,18 @@ export const metadata: Metadata = {
   description: 'Your destination for tech reviews, buying guides, and latest news.',
   keywords: ['tech reviews', 'buying guides', 'technology news', 'gadget reviews'],
   authors: [{ name: 'Appzyra Team' }],
+
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -52,7 +64,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-mesh selection:bg-primary/30`}>
+      
+      <body suppressHydrationWarning className={`${inter.className} bg-mesh selection:bg-primary/30`}>
         <BackgroundEffects />
         <div className="flex min-h-screen flex-col relative">
           <Navbar categories={categories} />

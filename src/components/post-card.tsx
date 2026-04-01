@@ -63,7 +63,11 @@ export default function PostCard({ post, index }: PostCardProps) {
 
                     <CardContent className="p-8">
                         <div className="text-xs font-semibold text-muted-foreground mb-4 flex items-center gap-3">
-                            <span>{post.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                            <span>{new Intl.DateTimeFormat('en-IN', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric',
+}).format(new Date(post.createdAt))}</span>
                             <div className="h-1 w-1 rounded-full bg-primary/60" />
                             <span className="text-primary/90">5 min read</span>
                         </div>
