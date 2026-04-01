@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { prisma } from '@/lib/prisma'
+export const revalidate = 3600; // 🔥 cache sitemap for 1 hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = process.env.SITE_URL || 'https://blog.appzyra.com';
@@ -7,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     try {
         const posts = await prisma.post.findMany({
             where: { published: true },
-            select: { slug: true, updatedAt: true },
+            select: { slug: true, updatedAt: true, image: true }, // ✅ add image
         });
 
         const categories = await prisma.category.findMany({
@@ -19,6 +20,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: post.updatedAt,
             changeFrequency: 'weekly' as const,
             priority: 0.7,
+            images: post.image ? [ {
+                  url: post.image,
+                   title: post.slug,
+                 },
+                 ]
+                 : undefined,                      
         }));
 
         const categoryUrls = categories.map((cat) => ({
