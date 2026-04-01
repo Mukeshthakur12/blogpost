@@ -22,7 +22,11 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     if (!post) return {};
 
     const url = `https://blog.appzyra.com/${post.slug}`;
-    const keywords = post.tags.map(tag => tag.name).join(', ');
+    const keywords = [
+  post.title,
+  post.category?.name,
+  ...post.tags.map(tag => tag.name),
+].join(', ');
 
     return {
         title: post.seoTitle || post.title,
@@ -102,7 +106,7 @@ export default async function PostPage({ params }: PostPageProps) {
                         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                             <span className="flex items-center gap-1.5 sm:gap-2"><Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {post.createdAt.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
-                            <span className="flex items-center gap-1.5 sm:gap-2"><Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> 6 MIN READ</span>
+                            <span className="flex items-center gap-1.5 sm:gap-2"><Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ</span>
                             <span className="hidden sm:flex w-1 h-1 bg-muted-foreground/40 rounded-full" />
                             <div className="flex items-center gap-2 sm:gap-3">
                                 <div className="h-7 w-7 sm:h-10 sm:w-10 rounded-full overflow-hidden bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
@@ -115,7 +119,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
                     {post.coverImage && (
                         <div className="pt-8 overflow-hidden rounded-[2.5rem] glass border-white/5 shadow-2xl">
-                            <img src={post.coverImage} alt={post.title} className="w-full h-auto" />
+                            <img loading="lazy" src={post.coverImage} alt={`${post.title} - complete guide`} className="w-full h-auto" />
                         </div>
                     )}
                 </header>
@@ -124,7 +128,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 <div className="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none prose-headings:font-extrabold prose-p:leading-[1.8] prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:w-full prose-img:rounded-2xl prose-strong:text-foreground break-words">
                     <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeRaw]}
+                        // rehypePlugins={[rehypeRaw]}
                     >
                         {post.content}
                     </ReactMarkdown>
