@@ -129,6 +129,23 @@
   }
 }
 
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  body :where(p, li, a, button, input, textarea, label, small, figcaption, td, th) {
+    font-size: 0.92em;
+  }
+  body :where(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.15;
+  }
+}
+
 @layer utilities {
   .glass {
     @apply bg-background/60 backdrop-blur-xl border border-white/10 shadow-glass;
@@ -169,15 +186,19 @@
 
 /* Tiptap / Content Styles */
 .prose table {
-  @apply w-full border-collapse border border-white/10 rounded-2xl overflow-hidden my-10 bg-white/2;
+  @apply w-full border-collapse border border-white/10 rounded-2xl overflow-hidden my-8 sm:my-10 bg-white/2 text-xs sm:text-sm;
+}
+
+.prose .article-table-shell {
+  @apply bg-white/2;
 }
 
 .prose th {
-  @apply bg-white/5 text-foreground font-black uppercase tracking-widest text-[10px] sm:text-xs p-4 sm:p-6 text-left border-b border-white/10;
+  @apply bg-white/5 text-foreground font-black uppercase tracking-[0.18em] text-[9px] sm:text-xs p-2.5 sm:p-6 text-left border-b border-white/10 leading-tight;
 }
 
 .prose td {
-  @apply p-4 sm:p-6 border-b border-white/5 text-sm sm:text-base align-top;
+  @apply p-2.5 sm:p-6 border-b border-white/5 text-[11px] sm:text-base leading-snug sm:leading-normal align-top;
 }
 
 .prose tr:last-child td {
@@ -186,20 +207,159 @@
 
 /* Specific for Specs Table */
 .prose table td:first-child {
-  @apply font-bold text-primary/80 bg-white/2 w-1/3;
+  @apply font-bold text-primary/80 bg-white/2 w-[34%] sm:w-1/3;
 }
 
 /* Interactive Grid / Images in row */
 .prose table:has(img) {
-  @apply border-0 bg-transparent;
+  @apply my-0 border-0 bg-transparent text-sm;
+  min-width: 0 !important;
+  table-layout: fixed;
+  width: 100% !important;
+}
+
+.prose table:has(img) th {
+  @apply text-[9px] sm:text-xs p-2 sm:p-4;
 }
 
 .prose table:has(img) td {
-  @apply border-0 p-2 sm:p-4;
+  @apply border-0 p-0 text-[12px] sm:text-sm;
 }
 
 .prose img {
   @apply rounded-2xl sm:rounded-3xl shadow-2xl border border-white/5 hover:scale-[1.02] transition-transform duration-500 mx-auto;
+}
+
+.prose table img {
+  @apply h-auto object-contain;
+  margin-inline: auto;
+}
+
+.prose table:has(img) colgroup {
+  display: none;
+}
+
+.prose table:has(img) tbody,
+.prose table:has(img) tr {
+  display: block;
+}
+
+.prose table:has(img) tr {
+  @apply grid overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] shadow-[0_18px_50px_rgba(0,0,0,0.18)];
+  grid-template-columns: minmax(320px, 38%) minmax(0, 1fr);
+}
+
+.prose table:has(img) td {
+  @apply border-0;
+}
+
+.prose table:has(img) td:first-child {
+  @apply flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),rgba(255,255,255,0.03)_55%,transparent)] p-6;
+  width: auto !important;
+}
+
+.prose table:has(img) td:first-child p {
+  @apply m-0 flex w-full items-center justify-center;
+}
+
+.prose table:has(img) td:last-child {
+  @apply flex min-w-0 flex-col justify-center p-6;
+}
+
+.prose table:has(img) td:last-child p:first-child {
+  @apply mt-0 mb-3 text-xl font-black leading-tight text-foreground;
+}
+
+.prose table:has(img) td:last-child p:first-child span {
+  color: inherit !important;
+  font-size: inherit !important;
+}
+
+.prose table:has(img) td:last-child p:not(:first-child) {
+  @apply my-2 text-sm leading-6 text-foreground/85;
+}
+
+.prose table:has(img) td:last-child p:last-child {
+  @apply mb-0;
+}
+
+.prose table:has(img) td:last-child strong {
+  @apply font-bold text-foreground;
+}
+
+.prose table:has(img) pre {
+  @apply mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/25 p-3 text-[11px] leading-relaxed text-foreground/85;
+}
+
+.prose table:has(img) code {
+  @apply whitespace-pre-wrap break-words bg-transparent p-0 text-inherit;
+}
+
+@media (max-width: 767px) {
+  .prose .article-table-shell {
+    @apply rounded-[1.25rem] border-white/8;
+  }
+  .prose :is(h1, h2, h3, h4, h5, h6) {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+  .prose table:has(img) {
+    font-size: 8px !important;
+  }
+
+  .prose table:has(img) tr {
+    grid-template-columns: 1fr;
+    @apply rounded-[1.25rem];
+  }
+
+  .prose table:has(img) td:first-child {
+    @apply min-h-[280px] p-4 pb-2;
+  }
+
+  .prose table:has(img) td:last-child {
+    @apply p-4 pt-2;
+  }
+
+  .prose table:has(img) img {
+    width: min(100%, 340px);
+    max-width: 100%;
+    max-height: 320px;
+    display: block;
+  }
+
+  .prose table:has(img) td:last-child p {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 8px !important;
+    line-height: 0.9rem;
+  }
+
+  .prose table:has(img) td:last-child p:first-child {
+    margin-bottom: 0.375rem;
+    font-size: 11px !important;
+    line-height: 1.1;
+  }
+
+  .prose table:has(img) td:last-child p span {
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  .prose table:has(img) td:last-child strong {
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  .prose table:has(img) pre {
+    @apply mt-2 rounded-xl p-2 text-[7px];
+  }
+}
+
+@media (min-width: 768px) {
+  .prose table:has(img) img {
+    width: min(100%, 420px);
+    max-height: 360px;
+  }
 }
 
 /* Blockquote / Callout */

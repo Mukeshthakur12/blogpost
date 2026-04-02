@@ -1,11 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock3 } from 'lucide-react';
 
 interface PostCardProps {
     post: {
@@ -29,11 +28,11 @@ export default function PostCard({ post, index }: PostCardProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ y: -10 }}
+            whileHover={{ y: -6 }}
         >
             <Link href={`/${post.slug}`} className="block h-full">
-                <Card className="h-full overflow-hidden glass-card group rounded-[2rem] border-white/5 transition-all duration-500">
-                    <div className="relative h-64 w-full overflow-hidden">
+                <Card className="group h-full overflow-hidden rounded-[1.75rem] border-white/5 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] transition-all duration-500 hover:border-white/10 hover:shadow-[0_18px_45px_rgba(0,0,0,0.18)]">
+                    <div className="relative h-52 w-full overflow-hidden sm:h-60">
                         {post.coverImage ? (
                             <img
                                 src={post.coverImage}
@@ -45,43 +44,46 @@ export default function PostCard({ post, index }: PostCardProps) {
                                 <span className="text-6xl filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-20">📖</span>
                             </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-80 transition-opacity duration-500" />
 
-                        <div className="absolute top-6 left-6 flex flex-col gap-2">
+                        <div className="absolute left-4 top-4 flex flex-col gap-2 sm:left-5 sm:top-5">
                             {post.category && (
-                                <Badge className="glass bg-black/20 text-white border-white/20 px-4 py-1.5 rounded-full font-bold uppercase tracking-tight text-[10px] hover:bg-primary transition-all duration-300">
+                                <Badge className="rounded-full border-white/15 bg-black/30 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md transition-all duration-300 hover:bg-primary">
                                     {post.category.name}
                                 </Badge>
                             )}
                             {post.featured && (
-                                <Badge className="bg-amber-500/90 text-white border-none px-4 py-1.5 rounded-full font-bold uppercase tracking-tight text-[9px] shadow-lg shadow-amber-500/20">
+                                <Badge className="border-none bg-amber-500/90 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.18em] text-white shadow-lg shadow-amber-500/20">
                                     ★ Featured
                                 </Badge>
                             )}
                         </div>
                     </div>
 
-                    <CardContent className="p-8">
-                        <div className="text-xs font-semibold text-muted-foreground mb-4 flex items-center gap-3">
+                    <CardContent className="p-5 sm:p-6">
+                        <div className="mb-4 flex items-center gap-3 text-[11px] font-semibold text-muted-foreground">
                             <span>{new Intl.DateTimeFormat('en-IN', {
   day: '2-digit',
   month: 'short',
   year: 'numeric',
 }).format(new Date(post.createdAt))}</span>
                             <div className="h-1 w-1 rounded-full bg-primary/60" />
-                            <span className="text-primary/90">5 min read</span>
+                            <span className="inline-flex items-center gap-1 text-primary/90">
+                                <Clock3 className="h-3.5 w-3.5" />
+                                5 min read
+                            </span>
                         </div>
 
-                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                        <h3 className="mb-3 line-clamp-2 text-lg font-bold leading-tight tracking-tight transition-colors group-hover:text-primary sm:text-xl">
                             {displayTitle}
                         </h3>
 
-                        <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
+                        <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">
                             {post.excerpt || "Unlock the potential of this article as we explore the deeper nuances of technology."}
                         </p>
 
-                        <div className="mt-8 flex items-center text-primary font-bold text-sm tracking-tight opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-x-4 group-hover:translate-x-0">
-                            Read More <ArrowRight className="ml-2 h-4 w-4" />
+                        <div className="mt-6 flex items-center text-sm font-bold tracking-tight text-primary opacity-70 transition-all duration-500 group-hover:opacity-100">
+                            Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
                     </CardContent>
                 </Card>
