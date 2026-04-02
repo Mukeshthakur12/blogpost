@@ -80,7 +80,7 @@ export default async function Home() {
                   </div>
 
                   <div className="space-y-3">
-                    <h1 className="max-w-[16ch] text-xl font-extrabold leading-[1.2] tracking-tight text-foreground sm:max-w-none sm:text-3xl lg:text-[1.35rem] xl:text-[1.4rem]">
+                    <h1 className="max-w-[54ch] text-xl font-extrabold leading-[1.2] tracking-tight text-foreground sm:max-w-none sm:text-3xl lg:text-[1.35rem] xl:text-[1.4rem]">
                       <Link href={`/${featuredPost.slug}`} className="transition-colors hover:text-primary">
                         {featuredPost.seoTitle || featuredPost.title}
                       </Link>

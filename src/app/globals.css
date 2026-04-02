@@ -304,7 +304,7 @@
     line-height: 1.2 !important;
   }
   .prose table:has(img) {
-    font-size: 8px !important;
+    font-size: 11px !important;
   }
 
   .prose table:has(img) tr {
@@ -330,7 +330,7 @@
   .prose table:has(img) td:last-child p {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    font-size: 8px !important;
+    font-size: 11px !important;
     line-height: 0.9rem;
   }
 

@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { Mail, Github, Twitter, Linkedin, Facebook, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Github, Twitter, Linkedin, Facebook, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 
 export default function Footer() {
@@ -43,7 +42,7 @@ export default function Footer() {
                         <ul className="space-y-4 text-sm font-semibold">
                             <li><Link href="/posts" className="text-muted-foreground/60 hover:text-primary transition-all flex items-center gap-2 group"><div className="h-1 w-1 bg-primary/40 rounded-full group-hover:w-3 transition-all" /> Latest Articles</Link></li>
                             <li><Link href="/category/reviews" className="text-muted-foreground/60 hover:text-primary transition-all flex items-center gap-2 group"><div className="h-1 w-1 bg-primary/40 rounded-full group-hover:w-3 transition-all" /> Tech Reviews</Link></li>
-                            <li><Link href="/category/guides" className="text-muted-foreground/60 hover:text-primary transition-all flex items-center gap-2 group"><div className="h-1 w-1 bg-primary/40 rounded-full group-hover:w-3 transition-all" /> Buying Guides</Link></li>
+                            <li><Link href="/category/guide" className="text-muted-foreground/60 hover:text-primary transition-all flex items-center gap-2 group"><div className="h-1 w-1 bg-primary/40 rounded-full group-hover:w-3 transition-all" /> Buying Guides</Link></li>
                             <li><Link href="/admin" className="text-muted-foreground/60 hover:text-primary transition-all flex items-center gap-2 group"><div className="h-1 w-1 bg-primary/40 rounded-full group-hover:w-3 transition-all" /> Admin Dashboard</Link></li>
                         </ul>
                     </div>
