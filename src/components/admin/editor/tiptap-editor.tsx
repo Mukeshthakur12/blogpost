@@ -130,7 +130,7 @@ export default function TiptapEditor({ content, onChange }: any) {
   const charCount = editor.storage.characterCount?.characters() ?? 0;
 
   return (
-    <div className="font-sans border border-gray-200 rounded-2xl shadow-xl overflow-hiddenflex flex-col">
+    <div className="font-sans border border-gray-200 bg-white rounded-2xl shadow-xl overflow-hiddenflex flex-col">
 
       {/* TOOLBAR */}
       <div className="fixed bottom-5  z-[100] ">
