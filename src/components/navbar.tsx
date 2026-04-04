@@ -1,12 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Search, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import GoogleSearch from '@/components/GoogleSearch';
 
 interface NavbarProps {
     categories: {
@@ -19,8 +17,6 @@ interface NavbarProps {
 export default function Navbar({ categories }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
-    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,15 +25,6 @@ export default function Navbar({ categories }: NavbarProps) {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-
-    const handleSearch = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (searchQuery.trim()) {
-            router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
-            setSearchQuery('');
-            setIsMobileMenuOpen(false);
-        }
-    };
 
     return (
         <header
@@ -92,15 +79,12 @@ export default function Navbar({ categories }: NavbarProps) {
                 </nav>
 
                 <div className="hidden md:flex items-center space-x-6">
-                    <form onSubmit={handleSearch} className="relative w-64 group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-300" />
-                        <Input
-                            placeholder="Search..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="pl-12 h-11 glass-card border-none focus-visible:ring-2 focus-visible:ring-primary/40 transition-all rounded-full bg-white/5"
+                    <div className="search-container w-full max-w-xs lg:max-w-sm">
+                        <GoogleSearch
+                            className="w-full"
+                            inputClassName="h-11 rounded-full border-none bg-white/5 glass-card transition-all focus-visible:ring-2 focus-visible:ring-primary/40"
                         />
-                    </form>
+                    </div>
                     {/* <Link href="/login">
                         <Button variant="default" className="rounded-full px-8 h-11 font-bold bg-primary hover:bg-primary/90 shadow-[0_0_20px_rgba(var(--primary),0.2)] hover:shadow-primary/40 transition-all active:scale-95">
                             Login
@@ -124,23 +108,22 @@ export default function Navbar({ categories }: NavbarProps) {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden absolute top-20 left-4 right-4 z-40 glass rounded-3xl p-6 shadow-2xl border border-white/10"
+                        className="md:hidden absolute top-20 left-4 right-4 z-40 rounded-3xl border border-white/10 bg-slate-950/95 p-6 shadow-2xl shadow-black/30 backdrop-blur-2xl"
                     >
                         <nav className="flex flex-col space-y-4">
-                            <form onSubmit={handleSearch} className="relative group mb-2">
-                                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors duration-300" />
-                                <Input
+                            <div className="search-container mb-2 w-full">
+                                <GoogleSearch
+                                    className="w-full"
+                                    inputClassName="h-14 rounded-2xl border border-white/10 bg-white/10 font-bold text-white placeholder:text-white/60 focus-visible:ring-2 focus-visible:ring-primary/40"
                                     placeholder="Search stories..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="pl-12 h-14 glass-card border-none focus-visible:ring-2 focus-visible:ring-primary/40 transition-all rounded-2xl bg-white/5 font-bold"
+                                    onSearch={() => setIsMobileMenuOpen(false)}
                                 />
-                            </form>
+                            </div>
                             {categories.map((cat) => (
                                 <Link
                                     key={cat.id}
                                     href={`/category/${cat.slug}`}
-                                    className="text-lg font-bold px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                                    className="rounded-xl px-4 py-2 text-lg font-bold transition-colors hover:bg-white/10"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {cat.name}
@@ -148,14 +131,14 @@ export default function Navbar({ categories }: NavbarProps) {
                             ))}
                             <Link
                                 href="/posts"
-                                className="text-lg font-bold px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                                className="rounded-xl px-4 py-2 text-lg font-bold transition-colors hover:bg-white/10"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 All Posts
                             </Link>
                             <Link
                                 href="/contact"
-                                className="text-lg font-bold px-4 py-2 hover:bg-white/5 rounded-xl transition-colors"
+                                className="rounded-xl px-4 py-2 text-lg font-bold transition-colors hover:bg-white/10"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Contact
