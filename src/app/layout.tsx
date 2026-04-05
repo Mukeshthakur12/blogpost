@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -64,8 +65,22 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="dark">
-      
       <body suppressHydrationWarning className={`${inter.className} bg-mesh selection:bg-primary/30`}>
+        <Script id="swg-basic-init" strategy="beforeInteractive">
+          {`(self.SWG_BASIC = self.SWG_BASIC || []).push(function (basicSubscriptions) {
+            basicSubscriptions.init({
+              type: "NewsArticle",
+              isPartOfType: ["Product"],
+              isPartOfProductId: "CAowwIvGDA:openaccess",
+              clientOptions: { theme: "light", lang: "en" },
+            });
+          });`}
+        </Script>
+        <Script
+          id="swg-basic-loader"
+          src="https://news.google.com/swg/js/v1/swg-basic.js"
+          strategy="afterInteractive"
+        />
         <BackgroundEffects />
         <div className="flex min-h-screen flex-col relative">
           <Navbar categories={categories} />
