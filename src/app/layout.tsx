@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: '/icon', type: 'image/png', sizes: '512x512' },
+      { url: '/icon.png', type: 'image/png', sizes: '103x87' },
     ],
-    shortcut: ['/icon'],
+    shortcut: ['/favicon.ico'],
     apple: [
-      { url: '/icon', sizes: '180x180', type: 'image/png' },
+      { url: '/icon.png', sizes: '103x87', type: 'image/png' },
     ],
   },
 
